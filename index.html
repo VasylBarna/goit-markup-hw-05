@@ -453,13 +453,12 @@
     refs.closeModalBtn.addEventListener("click", toggleModal);
     refs.backdrop.classList.toggle("is-hidden"); function LogBackdropClick()
     {console.log("Ето клик в бекдроп")};
+
+    <!-- Фикстрованная навигация Хедера Javascript -->
+    <script>
+      const { height: pageHeaderHeight } = document;
+      querySelector(".page-header").getBoundingClientRect();
+      document.body.style.paddingTop = `${pageHeaderHeight}px`;
+    </script>
   </body>
 </html>
-
-<!-- Фикстрованная навигация Хедера Javascript
-<script>
-  const { height: pageHeaderHeight } = document;
-  .querySelector(".page-header")
-  .getBoundingClientRect();
-  document.body.style.paddingTop = `${pageHeaderHeight}px`;
-</script> -->

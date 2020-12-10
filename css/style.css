@@ -51,6 +51,11 @@ img {
 }
 /* Header */
 .page-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 80px;
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
@@ -119,8 +124,19 @@ img {
 .site-nav a:focus,
 .auth-nav .link:focus {
   color: var(--accent-button-color);
-  --color1: var(--accent-button-color);
 }
+
+.current:hover::after {
+  display: block;
+  content: "";
+  width: inherit;
+  border-radius: 2px;
+  border: 4px solid var(--accent-button-color);
+  top: 100%;
+
+  position: absolute;
+}
+
 .icon-nav {
   margin-right: 10px;
   fill: currentColor;
@@ -301,7 +317,6 @@ img {
   width: 20px;
   height: 20px;
   fill: currentColor;
-  /* color: var(--icon-color); */
 }
 .soc-icon:hover,
 .soc-icon:focus {
@@ -520,6 +535,24 @@ img {
   font-weight: 400;
   margin: 0px auto;
 }
+/* Оверлей */
+.project-list .item {
+  position: relative;
+  background: rgba(33, 150, 243, 0.9);
+  overflow: hidden;
+}
+.overlay-project {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translate(-100%);
+  transition: transform 250ms ease;
+}
+.project-list .item:hover .overlay-project {
+  transform: translate(0);
+}
 /* Черновик */
 .backdrop {
   position: fixed;
@@ -529,6 +562,11 @@ img {
   height: 100%;
   background-color: aquamarine;
 }
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .modal {
   position: absolute;
   top: 50%;
@@ -541,10 +579,7 @@ img {
 
   background-color: burlywood;
 }
-.backdrop.is-hidden {
-  opacity: 0.5;
-  pointer-events: none;
-}
+
 /* .section-hero {
   background-image: linear-gradient(top, rgba(222, 245, 34, 06));
   background-image: radial-gradient(black 20%, red 40%, blue 60%);
